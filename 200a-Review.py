@@ -57,13 +57,21 @@ def getUnion(list1,list2):
     # list 2: expected list or tuple
     # return a sorted list of numbers that is in either of the lists
     # duplicate values will be ignored
-    union = list2
+    union = []
+    union = list2.copy()
     for i in range(0,len(list1)):
         union.append(list1[i])
         union.sort()
-    for i in range(0,len(union)-1):
+    i = 0
+    end = False 
+    while end == False:
+        if i == (len(union)-1):
+            end = True
+            continue
         if union[i] == union[i+1]:
-            union.pop[i]
+            union.pop(i)
+        else:
+            i += 1
     return union   
 
 def getMerge(list1,list2):
@@ -75,7 +83,7 @@ def getMerge(list1,list2):
     for i in range(0,len(list2)):
         try: 
             point = list1.index(list2[i])
-            list1.insert(list2[i],point)
+            list1.insert(point,list2[i])
         except:
             list1.append(list2[i])
 
